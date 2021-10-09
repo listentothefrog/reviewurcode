@@ -2,7 +2,7 @@
 
 A platform for programmers to review your code and minimize bugs and make your code less DRY.
 
-Setting up locally
+### Setting up locally
 
 Clone the repo:
 
