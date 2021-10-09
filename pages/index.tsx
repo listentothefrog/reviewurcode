@@ -1,9 +1,6 @@
-const index = () => {
-  return (
-    <div>
-      <h1 className="font-bold">Hello World!</h1>
-    </div>
-  );
+import Container from "../components/Container";
+const Home = () => {
+  return <Container variant={"regular"}>Hello World</Container>;
 };
 
-export default index;
+export default Home;
