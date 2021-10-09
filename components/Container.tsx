@@ -6,17 +6,16 @@ interface WrapperProps {
   variant?: WrapperVariant;
 }
 
-export const Wrapper: React.FC<WrapperProps> = ({
-  children,
-  variant = "regular",
-}) => {
+const Wrapper: React.FC<WrapperProps> = ({ children, variant = "regular" }) => {
   return (
     <div
       className={`mt-8 mx-auto w-full max-w-${
-        variant === "regular" ? "lg" : "md"
+        variant === "regular" ? "lg" : "xs"
       }`}
     >
       {children}
     </div>
   );
 };
+
+export default Wrapper;
