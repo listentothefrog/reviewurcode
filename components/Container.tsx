@@ -1,12 +1,15 @@
 import React from "react";
 
-export type WrapperVariant = "small" | "regular";
+export type ContainerVariant = "small" | "regular";
 
-interface WrapperProps {
-  variant?: WrapperVariant;
+interface ContainerProps {
+  variant?: ContainerVariant;
 }
 
-const Wrapper: React.FC<WrapperProps> = ({ children, variant = "regular" }) => {
+const Container: React.FC<ContainerProps> = ({
+  children,
+  variant = "regular",
+}) => {
   return (
     <div
       className={`mt-8 mx-auto w-full max-w-${
@@ -18,4 +21,4 @@ const Wrapper: React.FC<WrapperProps> = ({ children, variant = "regular" }) => {
   );
 };
 
-export default Wrapper;
+export default Container;
