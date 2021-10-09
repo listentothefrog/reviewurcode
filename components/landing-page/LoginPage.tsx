@@ -1,4 +1,5 @@
 import GithubIcon from "../../icons/Github";
+import { githubOAuth } from "../../lib/firebase";
 
 const LoginPage = () => {
   return (
@@ -20,7 +21,10 @@ const LoginPage = () => {
               </p>
               <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                 <div className="rounded-md shadow">
-                  <button className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 md:py-4 md:text-lg md:px-10">
+                  <button
+                    onClick={githubOAuth}
+                    className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-gray-600 hover:bg-gray-700 md:py-4 md:text-lg md:px-10"
+                  >
                     <GithubIcon width="24" height="20" />
                     <span className="ml-3">Login with Github</span>
                   </button>
