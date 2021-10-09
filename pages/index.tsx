@@ -1,6 +1,7 @@
-import Container from "../components/Container";
+import LoginPage from "../components/landing-page/LoginPage";
+
 const Home = () => {
-  return <Container variant={"regular"}>Hello World</Container>;
+  return <LoginPage />;
 };
 
 export default Home;
