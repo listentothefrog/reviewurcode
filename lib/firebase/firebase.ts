@@ -6,9 +6,9 @@ import { getAuth, GithubAuthProvider, signInWithPopup } from "firebase/auth";
 if (!getApps.length) {
   initializeApp(firebaseConfig);
 }
+export const auth = getAuth();
 
 export const githubOAuth = async () => {
-  const auth = getAuth();
   await signInWithPopup(auth, new GithubAuthProvider())
     .then((result) => {
       const user = result;
