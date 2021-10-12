@@ -2,7 +2,7 @@ import GithubIcon from "../../icons/Github";
 import { githubOAuth } from "../../lib/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../lib/firebase/firebase";
-import { useRouter } from "next/router";
+import { useRouter } from "next/dist/client/router";
 
 const LoginPage = () => {
   const [user, loading, error] = useAuthState(auth);
