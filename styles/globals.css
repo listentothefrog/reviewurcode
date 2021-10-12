@@ -4,15 +4,14 @@
 }
 
 #nprogress .bar {
-  background: var(--color-accent-hover) !important;
+  background: #ff6145 !important;
 }
 
 #nprogress .peg {
-  box-shadow: 0 0 10px var(--color-accent-hover),
-    0 0 5px var(--color-accent-hover) !important;
+  box-shadow: 0 0 10px #ff6145, 0 0 5px #ff6145 !important;
 }
 
 #nprogress .spinner-icon {
-  border-top-color: var(--color-accent-hover) !important;
-  border-left-color: var(--color-accent-hover) !important;
+  border-top-color: #ff6145 !important;
+  border-left-color: #ff6145 !important;
 }
