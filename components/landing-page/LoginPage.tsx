@@ -1,5 +1,5 @@
 import GithubIcon from "../../icons/Github";
-import { githubOAuth } from "../../lib/firebase";
+import { githubOAuth } from "../../lib/firebase/firebase";
 
 const LoginPage = () => {
   return (
