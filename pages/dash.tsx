@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebase/firebase";
-import { signOut } from "@firebase/auth";
+import DashboardHeader from "../components/Dashboard/DashboardHeader";
 
 const dash = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -13,14 +13,7 @@ const dash = () => {
   }
   return (
     <div>
-      hello world
-      <button
-        className="ml-5 px-4 py-3 mt-5  bg-red-500 text-white rounded-2xl"
-        onClick={() => signOut(auth)}
-      >
-        Sign Out
-      </button>
-      <img src={auth.currentUser?.photoURL! as string} />
+      <DashboardHeader />
     </div>
   );
 };
