@@ -20,6 +20,7 @@ const dash = () => {
       >
         Sign Out
       </button>
+      <img src={auth.currentUser?.photoURL! as string} />
     </div>
   );
 };
