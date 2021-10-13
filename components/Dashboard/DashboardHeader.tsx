@@ -11,6 +11,10 @@ const DashboardHeader = () => {
       name: "Report a bug",
       href: "https://github.com/listentothefrog/reviewurcode/issues",
     },
+    {
+      name: "Investors",
+      href: "https://twitter.com/listentothefrog",
+    },
   ];
   return (
     <div className="relative h-24 w-full bg-gray-100">
