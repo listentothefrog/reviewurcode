@@ -52,17 +52,17 @@ const DashboardHeader = () => {
               </span>
             </div>
             {/* Search */}
-            <div className="hidden sm:flex mr-2">
+            <div className="hidden sm:flex mr-2 w-3/5">
               <input
                 type="text"
                 id="search"
-                className="block px-2 py-2 pl-7 pr-12 sm:text-sm border-gray-300 bg-white text-gray-400 rounded-md"
+                className="block px-2 py-2 pl-7 pr-12 w-full sm:text-sm border-gray-300 bg-white text-gray-400 rounded-md"
                 placeholder="Search..."
               />
             </div>
             <img
               src={auth.currentUser?.photoURL! as string}
-              className="rounded-full sm:w-14 w-0 cursor-pointer"
+              className="rounded-full sm:w-10 w-0 cursor-pointer"
             />
           </nav>
         </div>
