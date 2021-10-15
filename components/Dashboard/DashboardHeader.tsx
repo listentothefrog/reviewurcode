@@ -61,10 +61,12 @@ const DashboardHeader = () => {
                 placeholder="Search..."
               />
             </div>
-            <img
-              src={auth.currentUser?.photoURL! as string}
-              className="rounded-full sm:w-10 w-0 cursor-pointer"
-            />
+            <Link href={`settings/${auth.currentUser?.uid}`}>
+              <img
+                src={auth.currentUser?.photoURL! as string}
+                className="rounded-full sm:w-10 w-0 cursor-pointer"
+              />
+            </Link>
           </nav>
         </div>
         {/*  Mobile Header */}
