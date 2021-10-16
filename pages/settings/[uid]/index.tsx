@@ -20,7 +20,7 @@ const index = () => {
         <link rel="shortcut icon" href={Logo.src} type="image/x-icon" />
         <meta name="viewport" content="initial-scale=1.0, width=device-width" />
       </Head>
-      <UserSettings username={auth.currentUser?.displayName} />
+      <UserSettings />
     </>
   );
 };

@@ -3,15 +3,10 @@ import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../lib/firebase/firebase";
 import Container from "../Container";
 
-interface UserPageProps {
-  username: string | null | undefined;
-}
-
-const UserSettings = (props: UserPageProps) => {
+const UserSettings = () => {
   const [user] = useAuthState(auth);
   const rawJoinedDate: string = user?.metadata.creationTime;
   const refinedJoinedDate = rawJoinedDate?.substring(4, 16);
-  const { username } = props;
   return (
     <Container variant="regular">
       <div className="w-full flex items-center justify-between">
@@ -22,7 +17,7 @@ const UserSettings = (props: UserPageProps) => {
             alt="user profile picture"
           />
           <div className="flex flex-col">
-            <h1 className="ml-2 text-2xl">{username}</h1>
+            <h1 className="ml-2 text-2xl">{auth.currentUser?.displayName}</h1>
             <p className="ml-2 mt-2 text-gray-400">
               Joined: {refinedJoinedDate}
             </p>
