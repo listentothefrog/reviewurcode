@@ -43,10 +43,9 @@ const UserSettings = (props: UserPageProps) => {
 
 export default UserSettings;
 
-UserSettings.getInitialProps = async ({ query }: any) => {
+UserSettings.getInitialProps = () => {
   try {
-    const username = typeof query.username === "string" ? query.username : "";
     const { uid }: any = auth.currentUser?.uid;
-    return { uid, username };
+    return { uid };
   } catch {}
 };
