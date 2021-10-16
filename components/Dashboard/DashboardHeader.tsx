@@ -63,6 +63,9 @@ const DashboardHeader = () => {
                 className="block px-2 py-2 pl-7 pr-12 w-full sm:text-sm border-gray-300 bg-white text-gray-400 rounded-md"
                 placeholder="Search..."
               />
+              <div className="flex items-center bg-gray-200 px-2 rounded-lg cursor-pointer">
+                🔍
+              </div>
             </div>
             <Link href={`settings/${auth.currentUser?.uid}`}>
               <img
@@ -109,11 +112,16 @@ const DashboardHeader = () => {
                   </a>
                 ))}
               </div>
-              <input
-                type="text"
-                className="block w-full py-2 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
-                placeholder="Search..."
-              />
+              <div className="flex">
+                <input
+                  type="text"
+                  className="block w-full py-2 pl-7 pr-12 sm:text-sm border-gray-300 rounded-md"
+                  placeholder="Search..."
+                />
+                <div className="flex items-center bg-gray-200 px-2 rounded-lg cursor-pointer">
+                  🔍
+                </div>
+              </div>
               <a
                 href="#"
                 className="block w-full px-5 py-3 text-center font-medium text-indigo-600 bg-gray-50 hover:bg-gray-100 mt-2"
