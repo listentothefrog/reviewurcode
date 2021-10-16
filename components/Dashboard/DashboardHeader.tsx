@@ -6,7 +6,10 @@ import { auth } from "../../lib/firebase/firebase";
 import Link from "next/dist/client/link";
 const DashboardHeader = () => {
   const navigation = [
-    { name: "Github", href: "https://github.com/listentothefrog/reviewurcode" },
+    {
+      name: "Contributions",
+      href: "https://github.com/listentothefrog/reviewurcode",
+    },
     {
       name: "Report a bug",
       href: "https://github.com/listentothefrog/reviewurcode/issues",
