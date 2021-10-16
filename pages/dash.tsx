@@ -2,6 +2,8 @@ import { useRouter } from "next/dist/client/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebase/firebase";
 import DashboardHeader from "../components/Dashboard/DashboardHeader";
+import Head from "next/head";
+import Logo from "../public/RedStone.png";
 
 const dash = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -13,6 +15,11 @@ const dash = () => {
   }
   return (
     <div>
+      <Head>
+        <title>Dashboard</title>
+        <link rel="shortcut icon" href={Logo.src} type="image/x-icon" />
+        <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+      </Head>
       <DashboardHeader />
     </div>
   );
