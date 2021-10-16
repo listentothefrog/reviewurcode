@@ -63,7 +63,7 @@ const DashboardHeader = () => {
                 className="block px-2 py-2 pl-7 pr-12 w-full sm:text-sm border-gray-300 bg-white text-gray-400 rounded-md"
                 placeholder="Search..."
               />
-              <div className="flex items-center bg-gray-200 px-3 rounded-lg cursor-pointer">
+              <div className="flex items-center bg-gray-200 px-3 rounded-md cursor-pointer">
                 🔍
               </div>
             </div>
