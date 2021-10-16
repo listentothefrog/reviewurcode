@@ -13,7 +13,7 @@ Clone the repo:
 Install all of the dependencies:
 
 ```bash
-  cd reviewurcodewe re
+  cd reviewurcode
   npm install
 ```
 
@@ -37,5 +37,3 @@ Make sure you create an Firebase Project you can follow this [video](https://you
 - [Typescript](https://github.com/microsoft/typescript)
 - [Tailwind CSS](https://github.com/tailwindlabs/tailwindcss)
 - [Firebase](https://github.com/firebase)
-
-<p align="center">Made with love in the 🇺🇸</p>
