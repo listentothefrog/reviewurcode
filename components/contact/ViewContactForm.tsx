@@ -10,7 +10,11 @@ import React from "react";
 const ViewContactForm = () => {
   const [state, handleSubmit] = useForm("xknkaowe");
   if (state.succeeded) {
-    return <p>Thanks for joining!</p>;
+    return (
+      <div className="flex items-center justify-center w-screen h-screen">
+        Thanks for sending a message we will respond to your message asap.
+      </div>
+    );
   }
   return (
     <Container variant="regular">
