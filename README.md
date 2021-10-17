@@ -1,6 +1,6 @@
 ## ReviewurCode
 
-A platform for programmers to review your code and minimize bugs and make your code less DRY.
+ReviewurCode is a online platfrom where programmers can review code and submit feedback to make your code more futuristic.
 
 ### Setting up locally
 
