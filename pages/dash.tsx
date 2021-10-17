@@ -1,7 +1,7 @@
 import { useRouter } from "next/dist/client/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebase/firebase";
-import DashboardHeader from "../components/Dashboard/DashboardHeader";
+import DashboardHeader from "../components/dashboard/DashboardHeader";
 import Head from "next/head";
 import Logo from "../public/RedStone.png";
 
