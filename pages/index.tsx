@@ -7,6 +7,7 @@ const Home = () => {
       <Head>
         <title>ReviewurCode — Online platform for code review</title>
         <link rel="shortcut icon" href={RedStone.src} type="image/x-icon" />
+        <html lang="en" />
         <meta
           name="title"
           content="ReviewurCode — Online platform for code review"
