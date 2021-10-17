@@ -1,8 +1,8 @@
 import GithubIcon from "../../icons/Github";
-import { githubOAuth } from "../../lib/firebase/firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../lib/firebase/firebase";
 import { useRouter } from "next/dist/client/router";
+import { githubOAuth } from "../../lib/auth";
 
 const LoginPage = () => {
   const [user, loading, error] = useAuthState(auth);
