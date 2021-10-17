@@ -4,8 +4,14 @@ import {
   MessageInputFeild,
   YourNameInputFeild,
 } from "./FormField";
+import { useForm } from "@formspree/react";
+import React from "react";
 
 const ViewContactForm = () => {
+  const [state, handleSubmit] = useForm("xknkaowe");
+  if (state.succeeded) {
+    return <p>Thanks for joining!</p>;
+  }
   return (
     <Container variant="regular">
       <div className="flex flex-col items-center justify-center p-2">
@@ -19,7 +25,10 @@ const ViewContactForm = () => {
             do, your thoughts are not limited!
           </p>
         </div>
-        <form className="flex items-start flex-1 flex-col w-full mt-3">
+        <form
+          onSubmit={handleSubmit}
+          className="flex items-start flex-1 flex-col w-full mt-3"
+        >
           <YourNameInputFeild />
           <EmailInputFeild />
           <MessageInputFeild />
