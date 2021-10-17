@@ -13,7 +13,7 @@ const Home = () => {
         />
         <meta
           name="description"
-          content="ReviewurCode is an online platform where programmers can ask for a code review or review other's code."
+          content="ReviewurCode is a online platfrom where programmers can review code and submit feedback to make your code more futuristic."
         />
 
         {/* Open Graph / Facebook  */}
@@ -25,7 +25,7 @@ const Home = () => {
         />
         <meta
           property="og:description"
-          content="ReviewurCode is an online platform where programmers can ask for a code review or review other's code."
+          content="ReviewurCode is a online platfrom where programmers can review code and submit feedback to make your code more futuristic."
         />
         <meta
           property="og:image"
@@ -41,7 +41,7 @@ const Home = () => {
         />
         <meta
           property="twitter:description"
-          content="ReviewurCode is an online platform where programmers can ask for a code review or review other's code. "
+          content="ReviewurCode is a online platfrom where programmers can review code and submit feedback to make your code more futuristic."
         />
         <meta
           property="twitter:image"
