@@ -24,7 +24,7 @@ const ViewContactForm = () => {
           <EmailInputFeild />
           <MessageInputFeild />
           <div className="w-full">
-            <button className="w-full py-3 rounded-md text-white bg-red-500 hover:bg-red-400 transition duration-500 ease-in-out  mt-3">
+            <button className="w-full py-3 rounded-md text-white bg-red-500 hover:bg-red-600 transition duration-500 ease-in-out  mt-3">
               Swooosh 💨
             </button>
           </div>
