@@ -1,7 +1,17 @@
-import ViewContactForm from "../components/contact/ViewContactForm";
+import React, { Suspense } from "react";
+
+const ViewContactForm = React.lazy(
+  () => import("../components/contact/ViewContactForm")
+);
 
 const contact = () => {
-  return <ViewContactForm />;
+  return (
+    <>
+      <Suspense fallback="Loading...">
+        <ViewContactForm />
+      </Suspense>
+    </>
+  );
 };
 
 export default contact;

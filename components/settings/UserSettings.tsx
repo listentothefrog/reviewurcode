@@ -12,13 +12,15 @@ const UserSettings = () => {
       <div className="w-full flex items-center justify-between">
         <div className="flex items-center justify-">
           <img
+            width="80px"
+            height="80px"
             className="w-20 rounded-lg"
             src={auth.currentUser?.photoURL! as string}
             alt="user profile picture"
           />
           <div className="flex flex-col">
             <h1 className="ml-2 text-2xl">{auth.currentUser?.displayName}</h1>
-            <p className="ml-2 mt-2 text-gray-400">
+            <p className="ml-2 mt-2 text-gray-600">
               Joined: {refinedJoinedDate}
             </p>
           </div>

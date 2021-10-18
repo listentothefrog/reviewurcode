@@ -50,7 +50,7 @@ const DashboardHeader = () => {
                 <a
                   key={item.name}
                   href={item.href}
-                  className="font-medium text-gray-500 hover:text-gray-900"
+                  className="font-medium text-gray-900 hover:text-gray-700"
                 >
                   {item.name}
                 </a>
@@ -73,8 +73,11 @@ const DashboardHeader = () => {
             </div>
             <Link href={`settings/${auth.currentUser?.uid}`}>
               <img
+                width="25px"
+                height="25px"
                 src={auth.currentUser?.photoURL! as string}
                 className="rounded-full sm:w-10 w-0 cursor-pointer"
+                alt="user profile picture"
               />
             </Link>
           </nav>
