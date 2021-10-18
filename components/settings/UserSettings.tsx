@@ -2,6 +2,7 @@ import { signOut } from "@firebase/auth";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../../lib/firebase/firebase";
 import Container from "../Container";
+import Image from "next/image";
 
 const UserSettings = () => {
   const [user] = useAuthState(auth);
@@ -11,7 +12,7 @@ const UserSettings = () => {
     <Container variant="regular">
       <div className="w-full flex items-center justify-between">
         <div className="flex items-center justify-">
-          <img
+          <Image
             width="80px"
             height="80px"
             className="w-20 rounded-lg"
