@@ -24,9 +24,9 @@ const ViewContactForm = () => {
             Get in touch with us
           </h1>
           <p className="mt-3 text-base sm:text-lg text-gray-500">
-            We'd love to hear form you! Send us a message using the form
-            oppisite, or email us. Ask us anything about the product and what we
-            do, your thoughts are not limited!
+            We'd love to hear form you! Send us a message using the form. Ask us
+            anything about the product and what we do, your thoughts are not
+            limited!
           </p>
         </div>
         <form
