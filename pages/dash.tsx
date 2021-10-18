@@ -19,7 +19,7 @@ const dash = () => {
   return (
     <div>
       <Head>
-        <title>Dashboard</title>
+        <title>ReviewurCode — Dashboard</title>
         <html lang="en" />
         <link rel="shortcut icon" href={Logo.src} type="image/x-icon" />
         <meta
