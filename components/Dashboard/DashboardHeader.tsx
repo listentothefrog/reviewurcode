@@ -3,7 +3,9 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import React, { Fragment } from "react";
 import Logo from "../../icons/logo/Logo";
 import { auth } from "../../lib/firebase/firebase";
-import Link from "next/dist/client/link";
+import Link from "next/link";
+import Image from "next/image";
+
 const DashboardHeader = () => {
   const navigation = [
     {
@@ -72,9 +74,9 @@ const DashboardHeader = () => {
               </div>
             </div>
             <Link href={`settings/${auth.currentUser?.uid}`}>
-              <img
-                width="25px"
-                height="25px"
+              <Image
+                width="50px"
+                height="50px"
                 src={auth.currentUser?.photoURL! as string}
                 className="rounded-full sm:w-10 w-0 cursor-pointer"
                 alt="user profile picture"
