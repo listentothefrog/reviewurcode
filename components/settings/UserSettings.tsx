@@ -11,7 +11,7 @@ const UserSettings = () => {
   return (
     <Container variant="regular">
       <div className="w-full flex items-center justify-between">
-        <div className="flex items-center justify-">
+        <div className="flex items-center">
           <Image
             width="80px"
             height="80px"
