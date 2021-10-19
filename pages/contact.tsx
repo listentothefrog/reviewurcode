@@ -12,10 +12,7 @@ const contact = () => {
         <title>ReviewurCode — Online platform for code review</title>
         <link rel="shortcut icon" href={RedStone.src} type="image/x-icon" />
         <html lang="en" />
-        <meta
-          name="title"
-          content="ReviewurCode — Online platform for code review"
-        />
+        <meta name="title" content="ReviewurCode — Contact" />
         <meta
           name="description"
           content="ReviewurCode is a online platfrom where programmers can review code and submit feedback to make your code more futuristic."
