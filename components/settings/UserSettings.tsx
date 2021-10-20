@@ -11,28 +11,33 @@ const UserSettings = () => {
   return (
     <Container variant="regular">
       <div className="w-full flex items-center justify-between">
-        <div className="flex items-center">
-          <Image
-            width="80px"
-            height="80px"
-            className="w-20 rounded-lg"
-            src={auth.currentUser?.photoURL! as string}
-            alt="user profile picture"
-          />
-          <div className="flex flex-col">
-            <h1 className="ml-2 text-2xl">{auth.currentUser?.displayName}</h1>
-            <p className="ml-2 mt-2 text-gray-600">
-              Joined: {refinedJoinedDate}
-            </p>
+        <div className="flex-1">
+          <div className="flex items-center">
+            <Image
+              width="80px"
+              height="80px"
+              className="w-20 rounded-lg"
+              src={auth.currentUser?.photoURL! as string}
+              alt="user profile picture"
+            />
+            <div className="flex flex-col">
+              <h1 className="ml-2 text-2xl">{auth.currentUser?.displayName}</h1>
+              <p className="ml-2 mt-2 text-gray-600">
+                Joined: {refinedJoinedDate}
+              </p>
+            </div>
           </div>
-        </div>
-        <div>
-          <button
-            className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-500 hover:bg-red-600 md:py-4 md:text-lg md:px-10"
-            onClick={async () => await signOut(auth)}
-          >
-            Sign out
-          </button>
+          <div className="mt-5">
+            <p className="font-bold text-2xl">Your posts ✍️</p>
+          </div>
+          <div className="mt-5">
+            <button
+              className="w-full flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-white bg-red-500 hover:bg-red-600 md:py-4 md:text-lg md:px-10"
+              onClick={async () => await signOut(auth)}
+            >
+              Sign out
+            </button>
+          </div>
         </div>
       </div>
     </Container>
