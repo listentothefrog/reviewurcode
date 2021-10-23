@@ -22,7 +22,7 @@ const dash = () => {
       <Head>
         <title>ReviewurCode — Dashboard</title>
         <html lang="en" />
-        <link rel="shortcut icon" href={Logo.src} type="image/x-icon" />
+        <link rel="shortcut icon" href={Logo.src} type="png" />
         <meta
           name="description"
           content="Upload your code for a review or review other's code."
