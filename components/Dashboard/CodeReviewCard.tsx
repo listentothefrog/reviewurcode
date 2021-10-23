@@ -1,22 +1,54 @@
+import { auth } from "../../lib/firebase/firebase";
+import Image from "next/image";
 const CodeReviewCard = () => {
   return (
-    <div className="flex mt-10 w-full justify-between p-4 rounded-lg transition duration-200 ease-in-out bg-gray-100 hover:bg-gray-200 cursor-pointer">
-      <div className="flex items-center w-40">
-        <div className="flex items-center">
-          <div className="flex flex-col items-center mr-2">
-            <span className="font-medium">0</span>
-            <span className="text-gray-500 font-semibold">Votes</span>
-          </div>
-          <div className="flex flex-col items-center">
-            <span className="font-medium">0</span>
-            <span className="text-gray-500 font-semibold">Views</span>
-          </div>
+    <div className="container my-12 mx-auto px-4 md:px-12">
+      <div className="flex flex-wrap -mx-1 lg:-mx-4">
+        <div className="my-1 px-1 w-full lg:my-4 lg:px-4">
+          <article className="overflow-hidden rounded-lg shadow-lg">
+            <a href="#">
+              <Image
+                width="600px"
+                height="500px"
+                objectFit="cover"
+                alt="code block"
+                className="block h-auto w-full"
+                src={auth.currentUser?.photoURL! as string}
+              />
+            </a>
+
+            <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+              <h1 className="text-lg">
+                <a className="no-underline hover:underline text-black" href="#">
+                  Remove calender from react bootstrap datepicker
+                </a>
+              </h1>
+              <p className="text-grey-darker text-sm">10/23/21</p>
+            </header>
+
+            <footer className="flex items-center justify-between leading-none p-2 md:p-4">
+              <a
+                className="flex items-center no-underline hover:underline text-black"
+                href="#"
+              >
+                <Image
+                  width="28"
+                  height="28"
+                  alt="Profile picture"
+                  className="block rounded-full w-7"
+                  src={auth.currentUser?.photoURL! as string}
+                />
+                <p className="ml-2 text-sm">{auth.currentUser?.displayName}</p>
+              </a>
+              <a
+                className="no-underline text-grey-darker hover:text-red-dark"
+                href="#"
+              >
+                <span className="hidden">Like</span>
+              </a>
+            </footer>
+          </article>
         </div>
-      </div>
-      <div className="flex items-center justify-evenly">
-        <h1 className="text-base sm:text-lg font-semibold">
-          Remove calender from react bootstrap datepicker
-        </h1>
       </div>
     </div>
   );
