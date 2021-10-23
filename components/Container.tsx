@@ -13,7 +13,7 @@ const Container: React.FC<ContainerProps> = ({
   return (
     <div
       className={`mt-8 mx-auto w-full max-w-${
-        variant === "regular" ? "lg" : "xs"
+        variant === "regular" ? "2xl" : "lg"
       }`}
     >
       {children}
