@@ -7,6 +7,7 @@ const DashboardHeader = React.lazy(
 import Head from "next/head";
 import Logo from "../public/RedStone.png";
 import React, { Suspense } from "react";
+import ViewFeed from "../components/dashboard/ViewFeed";
 
 const dash = () => {
   const [user, loading, error] = useAuthState(auth);
@@ -30,6 +31,7 @@ const dash = () => {
       </Head>
       <Suspense fallback="Loading...">
         <DashboardHeader />
+        <ViewFeed />
       </Suspense>
     </div>
   );
