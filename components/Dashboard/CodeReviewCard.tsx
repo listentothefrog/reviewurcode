@@ -1,6 +1,15 @@
 import { auth } from "../../lib/firebase/firebase";
 import Image from "next/image";
-const CodeReviewCard = () => {
+
+interface Post {
+  title: string;
+  upVotes: number;
+  createdBy: string;
+  createdAt: string;
+}
+
+const CodeReviewCard: React.FC<Post> = (props) => {
+  const { title, upVotes, createdAt, createdBy } = props;
   return (
     <div className="container my-12 mx-auto px-4 md:px-12">
       <div className="flex flex-wrap -mx-1 lg:-mx-4">
@@ -20,10 +29,10 @@ const CodeReviewCard = () => {
             <header className="flex items-center justify-between leading-tight p-2 md:p-4">
               <h1 className="text-lg">
                 <a className="no-underline hover:underline text-black" href="#">
-                  Remove calender from react bootstrap datepicker
+                  {title}
                 </a>
               </h1>
-              <p className="text-grey-darker text-sm">10/23/21</p>
+              <p className="text-grey-darker text-sm">{createdAt}</p>
             </header>
 
             <footer className="flex items-center justify-between leading-none p-2 md:p-4">
@@ -38,13 +47,13 @@ const CodeReviewCard = () => {
                   className="block rounded-full w-7"
                   src={auth.currentUser?.photoURL! as string}
                 />
-                <p className="ml-2 text-sm">{auth.currentUser?.displayName}</p>
+                <p className="ml-2 text-sm">{createdBy}</p>
               </a>
               <a
                 className="no-underline text-grey-darker hover:text-red-dark"
                 href="#"
               >
-                <span className="hidden">Like</span>
+                <span className="hidden">{upVotes}</span>
               </a>
             </footer>
           </article>
