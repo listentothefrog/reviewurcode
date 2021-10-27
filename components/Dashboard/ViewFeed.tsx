@@ -2,8 +2,9 @@ import { getDocs, collection } from "firebase/firestore";
 import { useState, useEffect } from "react";
 import { db } from "../../lib/firebase/firebase";
 import Container from "../Container";
-import CodeReviewCard from "./CodeReviewCard";
+const CodeReviewCard = dynamic(import("./CodeReviewCard"));
 import Link from "next/link";
+import dynamic from "next/dynamic";
 
 const ViewFeed = () => {
   const [posts, setPosts] = useState([]);
