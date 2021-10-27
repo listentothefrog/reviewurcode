@@ -1,10 +1,11 @@
 import { getDocs, collection } from "firebase/firestore";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { db } from "../../lib/firebase/firebase";
 import Container from "../Container";
 const CodeReviewCard = dynamic(import("./CodeReviewCard"));
 import Link from "next/link";
 import dynamic from "next/dynamic";
+import Spinner from "../Spinner";
 
 const ViewFeed = () => {
   const [posts, setPosts] = useState([]);
@@ -30,14 +31,16 @@ const ViewFeed = () => {
           </Link>
         </div>
         {posts.map((data: any) => (
-          <CodeReviewCard
-            key={data.id}
-            photoUrl={data.photoUrl}
-            title={data.title}
-            upVotes={data.upVotes}
-            createdBy={data.createdBy}
-            codeReviewImage={data.codeReviewImage}
-          />
+          <Suspense fallback={<Spinner />}>
+            <CodeReviewCard
+              key={data.id}
+              photoUrl={data.photoUrl}
+              title={data.title}
+              upVotes={data.upVotes}
+              createdBy={data.createdBy}
+              codeReviewImage={data.codeReviewImage}
+            />
+          </Suspense>
         ))}
       </div>
     </Container>
