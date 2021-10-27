@@ -1,27 +1,23 @@
-import dynamic from "next/dynamic";
-import Container from "../Container";
+import { getDocs, collection } from "firebase/firestore";
+import { useState, useEffect } from "react";
 import { db } from "../../lib/firebase/firebase";
-const CodeReviewCard = dynamic(() => import("./CodeReviewCard"));
-import {
-  collection,
-  getDocs,
-  limit,
-  orderBy,
-  query,
-} from "firebase/firestore/lite";
+import Container from "../Container";
+import CodeReviewCard from "./CodeReviewCard";
 
-interface Post {
-  id: string;
-  title: string;
-  upVotes: number;
-  createdBy: string;
-  createdAt: string;
-}
+const ViewFeed = () => {
+  const [posts, setPosts] = useState([]);
 
-const ViewFeed: any = async () => {
-  const postsRef = collection(db, "discussions");
-  query(postsRef, orderBy("createdAt"), limit(20));
-  const [posts]: any = await getDocs(postsRef); // ! bug is right here
+  useEffect(() => {
+    const getData = async () => {
+      const posts: any = await getDocs(collection(db, "posts"));
+      console.log(posts);
+      setPosts(posts.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
+      console.log(posts);
+    };
+
+    getData();
+  }, []);
+
   return (
     <Container variant="regular">
       <div className="flex flex-col items-center justify-between m-2">
@@ -31,16 +27,16 @@ const ViewFeed: any = async () => {
             Create a post
           </button>
         </div>
-        {posts &&
-          posts.map((post: Post) => (
-            <CodeReviewCard
-              key={post.id}
-              title={post.title}
-              createdAt={post.createdAt}
-              createdBy={post.createdBy}
-              upVotes={post.upVotes}
-            />
-          ))}
+        {posts.map((data: any) => (
+          <CodeReviewCard
+            key={data.id}
+            photoUrl={data.photoUrl}
+            title={data.title}
+            upVotes={data.upVotes}
+            createdBy={data.createdBy}
+            codeReviewImage={data.codeReviewImage}
+          />
+        ))}
       </div>
     </Container>
   );
