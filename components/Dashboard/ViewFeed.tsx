@@ -12,9 +12,7 @@ const ViewFeed = () => {
   useEffect(() => {
     const getData = async () => {
       const posts: any = await getDocs(collection(db, "posts"));
-      console.log(posts);
       setPosts(posts.docs.map((doc: any) => ({ ...doc.data(), id: doc.id })));
-      console.log(posts);
     };
 
     getData();
