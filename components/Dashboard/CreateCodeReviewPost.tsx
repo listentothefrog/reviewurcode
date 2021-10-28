@@ -7,7 +7,8 @@ const CreateCodeReviewPost = () => {
         <div className="w-full">
           <p className="font-bold">Title</p>
           <p className="text-gray-400">
-            Be specific and imagine asking a review from your Senior engineer
+            Be specific and imagine asking a code review from your Senior
+            engineer
           </p>
           <div>
             <input
