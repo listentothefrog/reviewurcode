@@ -10,6 +10,7 @@
     "@formspree/react": "^2.2.4",
     "@headlessui/react": "^1.4.1",
     "@heroicons/react": "^1.0.4",
+    "axios": "^0.24.0",
     "firebase": "^9.1.2",
     "next": "^11.1.2",
     "next-redux-wrapper": "^7.0.5",
