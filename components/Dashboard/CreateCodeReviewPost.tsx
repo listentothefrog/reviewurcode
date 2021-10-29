@@ -3,7 +3,10 @@ import Container from "../Container";
 const CreateCodeReviewPost = () => {
   return (
     <Container variant="regular">
-      <div className="m-2 sm:m-0 flex flex-col w-full h-full">
+      <form
+        onSubmit={(e) => e.preventDefault()}
+        className="m-2 sm:m-0 flex flex-col w-full h-full"
+      >
         <div className="w-full">
           <p className="font-bold">Title</p>
           <p className="text-gray-400">
@@ -12,6 +15,7 @@ const CreateCodeReviewPost = () => {
           </p>
           <div>
             <input
+              required
               type="text"
               id="search"
               className="block mt-3 px-2 py-3 pl-7 pr-12 w-full sm:text-sm border-gray-300 border-2 rounded-md"
@@ -27,6 +31,7 @@ const CreateCodeReviewPost = () => {
           </p>
           <div>
             <textarea
+              required
               id="search"
               className="block mt-3 px-2 py-3 pl-7 pr-12 w-full sm:text-sm border-gray-300 border-2 rounded-md"
             />
@@ -38,7 +43,7 @@ const CreateCodeReviewPost = () => {
             A upload a picture of the code you want the person to review
           </p>
           <p className="text-gray-400 mt-2 italic">
-            We recommend using a tool called{" "}
+            We recommend using a tool{" "}
             <a
               target="_blank"
               href="https://carbon.now.sh/"
@@ -46,7 +51,7 @@ const CreateCodeReviewPost = () => {
             >
               carbon.now.sh
             </a>{" "}
-            to upload your code snippet
+            to create your code snippet
           </p>
           <div className="w-full sm:px-8 md:px-16 sm:py-8">
             <main className="container mx-auto max-w-screen-lg h-full">
@@ -75,7 +80,7 @@ const CreateCodeReviewPost = () => {
                       <span className="mt-2 text-base leading-normal">
                         Select a file
                       </span>
-                      <input type="file" className="hidden" />
+                      <input required type="file" className="hidden" />
                     </label>
                   </header>
                 </section>
@@ -88,7 +93,7 @@ const CreateCodeReviewPost = () => {
             </button>
           </div>
         </div>
-      </div>
+      </form>
     </Container>
   );
 };
