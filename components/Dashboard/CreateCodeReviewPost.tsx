@@ -8,7 +8,11 @@ const CreateCodeReviewPost = () => {
         className="m-2 sm:m-0 flex flex-col w-full h-full"
       >
         <div className="w-full">
-          <p className="font-bold">Title</p>
+          <h1 className="text-2xl sm:text-4xl font-bold">
+            Create a public post
+          </h1>
+          <div className="w-full border border-gray-500 mt-2"></div>
+          <p className="font-bold mt-2">Title</p>
           <p className="text-gray-400">
             Be specific and imagine asking a code review from your Senior
             engineer
