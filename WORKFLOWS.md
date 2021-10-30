@@ -1,6 +1,6 @@
 # Workflow
 
-These are the workflows that we are planning to use in the web app. If you see anything that can be improved please feel free to contribute.
+These are the workflows that we are planning to use in the web app. If you see anything that can be improved please feel free to add more.
 
 ### Authentication Workflow
 
