@@ -21,7 +21,9 @@ const UserSettings = () => {
               alt="user profile picture"
             />
             <div className="flex flex-col">
-              <h1 className="ml-2 text-2xl">{auth.currentUser?.displayName}</h1>
+              <h1 className="ml-2 text-2xl">
+                {user?.reloadUserInfo.screenName}
+              </h1>
               <p className="ml-2 mt-2 text-gray-600">
                 Joined: {refinedJoinedDate}
               </p>
