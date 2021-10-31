@@ -1,5 +1,6 @@
 import { addDoc, collection } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
+import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, storage } from "../../lib/firebase/firebase";
@@ -10,10 +11,12 @@ const CreateCodeReviewPost = () => {
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
 
+  const router = useRouter();
   const formHandler = async (e: any) => {
     e.preventDefault();
     const file = e.target[0].files[0];
     uploadCodeSnippet(file);
+    router.push("/dash");
   };
   const uploadCodeSnippet = async (file: any) => {
     const storageRef = ref(storage, `snippets/${file.name}`);
