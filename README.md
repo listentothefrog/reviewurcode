@@ -25,7 +25,7 @@ Start running locally:
 
 **Setting up the backend**
 
-Make sure you create a Firebase Project you can follow this [video](https://youtu.be/rQvOAnNvcNQ) made by the Firebase team. After your project is ready, go to your Github profile and create a Github OAuth app, you can follow the [documentation](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) made by Github.  
+Make sure you create a [Firebase Project](https://firebase.google.com/). After your project is ready, go to your Github profile and create a Github OAuth app, you can follow the [documentation](https://docs.github.com/en/developers/apps/building-oauth-apps/creating-an-oauth-app) for setting a Oauth app.  
 
 After you are done setting up the backend please read the [Workflow](https://github.com/listentothefrog/reviewurcode/blob/dev/WORKFLOWS.md) so that you can understand the logic that we are using in the backend. 
 
