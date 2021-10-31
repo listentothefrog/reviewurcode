@@ -3,7 +3,6 @@ import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import React, { Fragment } from "react";
 import Logo from "../../icons/logo/Logo";
 import { auth } from "../../lib/firebase/firebase";
-import Image from "next/image";
 
 const DashboardHeader = () => {
   const navigation = [
@@ -73,7 +72,7 @@ const DashboardHeader = () => {
               </div>
             </div>
             <a href={`settings/${auth.currentUser?.uid}`}>
-              <Image
+              <img
                 width="50px"
                 height="50px"
                 src={auth.currentUser?.photoURL! as string}
