@@ -1,19 +1,34 @@
+import { addDoc, collection } from "@firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
-import { storage } from "../../lib/firebase/firebase";
+import { useState } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
+import { auth, db, storage } from "../../lib/firebase/firebase";
 import Container from "../Container";
 
 const CreateCodeReviewPost = () => {
-  const formHandler = (e: any) => {
+  const [user] = useAuthState(auth);
+  const [title, setTitle] = useState("");
+  const [body, setBody] = useState("");
+
+  const formHandler = async (e: any) => {
     e.preventDefault();
     const file = e.target[0].files[0];
     uploadCodeSnippet(file);
   };
-  const uploadCodeSnippet = (file: any) => {
+  const uploadCodeSnippet = async (file: any) => {
     const storageRef = ref(storage, `snippets/${file.name}`);
-    uploadBytes(storageRef, file).then(() => {
+    await uploadBytes(storageRef, file).then(() => {
       getDownloadURL(ref(storage, `snippets/${file.name}`))
         .then((url: any) => {
-          console.log(url);
+          const postsRef = collection(db, "posts");
+          addDoc(postsRef, {
+            title: title,
+            body: body,
+            codeReviewImage: url,
+            createdBy: user?.reloadUserInfo.screenName,
+            photoUrl: auth.currentUser?.photoURL,
+            upVotes: 0,
+          });
         })
         .catch((error: Error) => {
           console.log(error.message);
@@ -69,6 +84,8 @@ const CreateCodeReviewPost = () => {
                 required
                 type="text"
                 id="title"
+                onChange={(e) => setTitle(e.target.value)}
+                value={title}
                 className="block mt-3 px-2 py-3 pl-7 pr-12 w-full sm:text-sm border-gray-300 border-2 rounded-md"
                 placeholder="eg: Is there a better way I can improve this lambda function?"
               />
@@ -84,6 +101,8 @@ const CreateCodeReviewPost = () => {
               <textarea
                 required
                 id="body"
+                onChange={(e) => setBody(e.target.value)}
+                value={body}
                 className="block mt-3 px-2 py-3 pl-7 pr-12 w-full sm:text-sm border-gray-300 border-2 rounded-md"
               />
             </div>
