@@ -2,9 +2,7 @@ import { getDocs, collection } from "firebase/firestore";
 import { useState, useEffect, Suspense } from "react";
 import { db } from "../../lib/firebase/firebase";
 import Container from "../Container";
-const CodeReviewCard = dynamic(import("./CodeReviewCard"));
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import Spinner from "../Spinner";
 
 const ViewFeed = () => {
@@ -31,15 +29,52 @@ const ViewFeed = () => {
           </Link>
         </div>
         {posts.map((data: any) => (
-          <Suspense fallback={<Spinner />}>
-            <CodeReviewCard
-              key={data.id}
-              photoUrl={data.photoUrl}
-              title={data.title}
-              upVotes={data.upVotes}
-              createdBy={data.createdBy}
-              codeReviewImage={data.codeReviewImage}
-            />
+          <Suspense key={data.id} fallback={<Spinner />}>
+            <div className="container mt-2 mx-auto px-4 md:px-12">
+              <div className="flex flex-wrap -mx-1 lg:-mx-4">
+                <div className="my-1 px-1 w-full lg:my-4 lg:px-4">
+                  <article className="overflow-hidden rounded-lg shadow-lg">
+                    <a href="#">
+                      <img
+                        src={data.codeReviewImage}
+                        width="600px"
+                        height="500px"
+                        alt="code block"
+                        className="block h-auto w-full object-cover"
+                      />
+                    </a>
+
+                    <header className="flex items-center justify-between leading-tight p-2 md:p-4">
+                      <h1 className="text-lg">
+                        <a
+                          className="no-underline hover:underline text-black"
+                          href="#"
+                        >
+                          {data.title}
+                        </a>
+                      </h1>
+                    </header>
+
+                    <footer className="flex items-center justify-between leading-none md:p-4">
+                      <a className="flex items-center no-underline hover:underline text-black">
+                        <img
+                          width="28"
+                          height="28"
+                          alt="Profile picture"
+                          className="block rounded-full w-7"
+                          src={data.photoUrl}
+                        />
+                        <p className="ml-2 text-sm">{data.createdBy}</p>
+                      </a>
+                      <p className="ml-2 text-sm">
+                        <span className="text-green-600">{data.upVotes}</span>{" "}
+                        upvotes
+                      </p>
+                    </footer>
+                  </article>
+                </div>
+              </div>
+            </div>
           </Suspense>
         ))}
       </div>
