@@ -34,24 +34,23 @@ const ViewFeed = () => {
               <div className="flex flex-wrap -mx-1 lg:-mx-4">
                 <div className="my-1 px-1 w-full lg:my-4 lg:px-4">
                   <article className="overflow-hidden rounded-lg shadow-lg">
-                    <a href="#">
+                    <Link href={`posts/${data.id}`}>
                       <img
                         src={data.codeReviewImage}
                         width="600px"
                         height="500px"
                         alt="code block"
-                        className="block h-auto w-full object-cover"
+                        className="block h-auto w-full object-cover cursor-pointer"
                       />
-                    </a>
+                    </Link>
 
                     <header className="flex items-center justify-between leading-tight p-2 md:p-4">
                       <h1 className="text-lg">
-                        <a
-                          className="no-underline hover:underline text-black"
-                          href="#"
-                        >
-                          {data.title}
-                        </a>
+                        <Link href={`posts/${data.id}`}>
+                          <p className="no-underline hover:underline text-black cursor-pointer">
+                            {data.title}
+                          </p>
+                        </Link>
                       </h1>
                     </header>
 
