@@ -3,6 +3,7 @@ import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
+import { useToasts } from "react-toast-notifications";
 import { auth, db, storage } from "../../lib/firebase/firebase";
 import Container from "../Container";
 
@@ -12,10 +13,12 @@ const CreateCodeReviewPost = () => {
   const [body, setBody] = useState("");
 
   const router = useRouter();
+  const { addToast } = useToasts();
   const formHandler = async (e: any) => {
     e.preventDefault();
     const file = e.target[0].files[0];
     uploadCodeSnippet(file);
+    addToast("Your post was created succesfully 💪", { appearance: "error" });
     router.push("/dash");
   };
   const uploadCodeSnippet = async (file: any) => {
@@ -34,7 +37,7 @@ const CreateCodeReviewPost = () => {
           });
         })
         .catch((error: Error) => {
-          console.log(error.message);
+          addToast(error.message, { appearance: "error" });
         });
     });
   };
