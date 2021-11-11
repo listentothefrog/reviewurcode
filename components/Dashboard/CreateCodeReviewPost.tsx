@@ -46,19 +46,19 @@ const CreateCodeReviewPost = () => {
         <div className="w-full mt-5">
           <p className="font-bold">Upload your code</p>
           <p className="text-gray-500">
-            A upload a picture of the code you want the person to review
+            A upload a screenshot of your the code you want the person to review
           </p>
           <p className="text-gray-500 mt-2 italic">
-            We recommend using a tool{" "}
+            If this your first time uploading a picture of your code please read
+            the {""}
             <a
               target="_blank"
-              href="https://carbon.now.sh/"
+              href="http://localhost://3000/docs/upload-code"
               rel="noreferrer"
               className="text-blue-800 hover:underline hover:text-blue-700"
             >
-              carbon.now.sh
-            </a>{" "}
-            to create your code snippet
+              docs
+            </a>
           </p>
           <div className="w-full sm:px-8 md:px-16 sm:py-8">
             <main className="container mx-auto max-w-screen-lg h-full">
