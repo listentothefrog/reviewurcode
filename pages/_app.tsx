@@ -4,6 +4,7 @@ import NProgress from "nprogress";
 import { Router } from "next/dist/client/router";
 import "../styles/globals.css";
 import "nprogress/nprogress.css";
+import { ToastProvider } from "react-toast-notifications";
 
 Router.events.on("routeChangeStart", (url) => {
   console.log(`Loading: ${url}`);
@@ -13,7 +14,13 @@ Router.events.on("routeChangeComplete", () => NProgress.done());
 Router.events.on("routeChangeError", () => NProgress.done());
 
 const MyApp = ({ Component, pageProps }: AppProps) => {
-  return <Component {...pageProps} />;
+  return (
+    <>
+      <ToastProvider>
+        <Component {...pageProps} />
+      </ToastProvider>
+    </>
+  );
 };
 
 export default MyApp;
