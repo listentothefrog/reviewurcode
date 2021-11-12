@@ -1,11 +1,11 @@
 import { useRouter } from "next/dist/client/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 const UserSettings = React.lazy(
-  () => import("../../../components/settings/UserSettings")
+  () => import("../../components/settings/UserSettings")
 );
-import { auth } from "../../../lib/firebase/firebase";
+import Logo from "../../public/RedStone.png"
+import { auth } from "../../lib/firebase/firebase";
 import Head from "next/head";
-import Logo from "../../../public/RedStone.png";
 import React, { Suspense } from "react";
 
 const index = () => {
