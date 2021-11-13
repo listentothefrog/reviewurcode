@@ -43,6 +43,7 @@ const Post = ({ data }: any) => {
         setUpVoteActive(!upVoteActive);
       })
       .catch((error: Error) => {
+        console.log(error.message);
         if (error.message === "Missing or insufficient permissions.") {
           addToast("Please log in to vote on posts", {
             appearance: "error",
@@ -66,6 +67,7 @@ const Post = ({ data }: any) => {
         setDownVoteActive(!downVoteActive);
       })
       .catch((error: Error) => {
+        console.log(error.message);
         if (error.message === "Missing or insufficient permissions.") {
           addToast("Please log in to vote on posts", {
             appearance: "error",
@@ -85,7 +87,7 @@ const Post = ({ data }: any) => {
         <title>{data.title}</title>
         <html lang="en" />
         <link rel="shortcut icon" href={RedStone.src} type="image/x-icon" />
-        <meta name="description" content={data.body} />
+        <meta name="description" content={data.body! as any} />
         {/* Open Graph / Facebook  */}
         <meta property="og:type" content="website" />
         {/* <meta property="og:url" content="" /> */}
@@ -104,7 +106,7 @@ const Post = ({ data }: any) => {
             <h1 className="text-xl sm:text-3xl font-medium">{data.title}</h1>
           </div>
           <div className="flex items-center justify-items-start sm:justify-items-end">
-            <p className="text-base sm:text-sm text-blue-500 cursor-pointer hover:underline">
+            <p className="text-base sm:text-sm text-blue-600 cursor-pointer hover:underline">
               {data.createdBy}
             </p>
           </div>
@@ -114,6 +116,7 @@ const Post = ({ data }: any) => {
         <div className="mt-5 flex items-center">
           <div className="flex flex-col items-center">
             <button
+              aria-label="Upvote"
               className={upVoteActive ? "cursor-pointer" : "cursor-not-allowed"}
               onClick={() => upVotePost()}
             >
@@ -134,6 +137,7 @@ const Post = ({ data }: any) => {
             </button>
             {data.upVotes}
             <button
+              aria-label="DownVote"
               className={
                 downVoteActive ? "cursor-pointer" : "cursor-not-allowed"
               }
@@ -159,6 +163,8 @@ const Post = ({ data }: any) => {
         </div>
         <div>
           <img
+            width="800px"
+            height="800px"
             className="w-full mt-5"
             src={data.codeReviewImage}
             alt="code snippet"
