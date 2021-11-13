@@ -1,7 +1,7 @@
 import type { AppProps } from "next/app";
 import "tailwindcss/tailwind.css";
 import NProgress from "nprogress";
-import { Router } from "next/dist/client/router";
+import { Router } from "next/router";
 import "../styles/globals.css";
 import "nprogress/nprogress.css";
 import { ToastProvider } from "react-toast-notifications";
