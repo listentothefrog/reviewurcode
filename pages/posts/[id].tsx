@@ -7,6 +7,7 @@ import Container from "../../components/Container";
 import TwitterIcon from "../../icons/Twitter";
 import { useRouter } from "next/router";
 import { useState } from "react";
+import { useToasts } from "react-toast-notifications";
 
 export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const docRef = doc(db, "posts", ctx.query.id);
@@ -18,6 +19,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
 };
 
 const Post = ({ data }: any) => {
+  const { addToast } = useToasts();
   const [upVote, setUpVote] = useState(0);
   const [downVote, setDownVote] = useState(0);
 
@@ -30,6 +32,13 @@ const Post = ({ data }: any) => {
     const docRef = doc(db, "posts", id! as any);
     await updateDoc(docRef, {
       upVotes: increment(1),
+    }).catch((error: Error) => {
+      if (error.message === "Missing or insufficient permissions.") {
+        addToast("Please log in to vote on posts", {
+          appearance: "error",
+          autoDismiss: true,
+        });
+      }
     });
   };
 
@@ -38,6 +47,13 @@ const Post = ({ data }: any) => {
     const docRef = doc(db, "posts", id! as any);
     await updateDoc(docRef, {
       upVotes: increment(-1),
+    }).catch((error: Error) => {
+      if (error.message === "Missing or insufficient permissions.") {
+        addToast("Please log in to vote on posts", {
+          appearance: "error",
+          autoDismiss: true,
+        });
+      }
     });
   };
 
