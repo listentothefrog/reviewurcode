@@ -56,7 +56,7 @@ const Post = ({ data }: any) => {
       upVotes: increment(-1),
     })
       .then(() => {
-        addToast("Upvoted post succesfully just refresh the page 👎", {
+        addToast("Downvoted post succesfully just refresh the page 👎", {
           appearance: "info",
           autoDismiss: true,
         });
