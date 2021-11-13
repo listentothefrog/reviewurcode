@@ -84,7 +84,7 @@ const Post = ({ data }: any) => {
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="green"
+                stroke="gray"
               >
                 <path
                   strokeLinecap="round"
@@ -101,7 +101,7 @@ const Post = ({ data }: any) => {
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="red"
+                stroke="gray"
               >
                 <path
                   strokeLinecap="round"
