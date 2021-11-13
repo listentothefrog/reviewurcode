@@ -2,12 +2,12 @@ import { useRouter } from "next/dist/client/router";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth } from "../lib/firebase/firebase";
 const DashboardHeader = dynamic(
-  () => import("../components/dashboard/DashboardHeader")
+  () => import("../components/Dashboard/DashboardHeader")
 );
 import Head from "next/head";
 import Logo from "../public/RedStone.png";
 import React, { Suspense } from "react";
-import ViewFeed from "../components/dashboard/ViewFeed";
+import ViewFeed from "../components/Dashboard/ViewFeed";
 import Spinner from "../components/Spinner";
 import dynamic from "next/dynamic";
 
