@@ -18,7 +18,7 @@ const CreateCodeReviewPost = () => {
     e.preventDefault();
     const file = e.target[0].files[0];
     uploadCodeSnippet(file);
-    addToast("Your post was created succesfully 💪", { appearance: "error" });
+    addToast("Your post was created succesfully 🤩", { appearance: "error" });
     router.push("/dash");
   };
   const uploadCodeSnippet = async (file: any) => {
