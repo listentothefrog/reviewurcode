@@ -64,7 +64,7 @@ const Post = ({ data }: any) => {
           />
         </div>
         <a
-          href={`http://twitter.com/intent/tweet?url=http://localhost:3000${asPath}`}
+          href={`https://twitter.com/intent/tweet?url=http://localhost:3000${asPath}`}
         >
           <button className="flex items-center mt-2 justify-start px-8 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
             <TwitterIcon width="24" height="20" />
