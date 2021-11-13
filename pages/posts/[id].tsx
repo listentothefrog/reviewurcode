@@ -32,14 +32,21 @@ const Post = ({ data }: any) => {
     const docRef = doc(db, "posts", id! as any);
     await updateDoc(docRef, {
       upVotes: increment(1),
-    }).catch((error: Error) => {
-      if (error.message === "Missing or insufficient permissions.") {
-        addToast("Please log in to vote on posts", {
-          appearance: "error",
+    })
+      .then(() => {
+        addToast("Upvoted post succesfully just refresh the page 👍", {
+          appearance: "info",
           autoDismiss: true,
         });
-      }
-    });
+      })
+      .catch((error: Error) => {
+        if (error.message === "Missing or insufficient permissions.") {
+          addToast("Please log in to vote on posts", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        }
+      });
   };
 
   const downVotePost = async () => {
@@ -47,14 +54,21 @@ const Post = ({ data }: any) => {
     const docRef = doc(db, "posts", id! as any);
     await updateDoc(docRef, {
       upVotes: increment(-1),
-    }).catch((error: Error) => {
-      if (error.message === "Missing or insufficient permissions.") {
-        addToast("Please log in to vote on posts", {
-          appearance: "error",
+    })
+      .then(() => {
+        addToast("Upvoted post succesfully just refresh the page 👎", {
+          appearance: "info",
           autoDismiss: true,
         });
-      }
-    });
+      })
+      .catch((error: Error) => {
+        if (error.message === "Missing or insufficient permissions.") {
+          addToast("Please log in to vote on posts", {
+            appearance: "error",
+            autoDismiss: true,
+          });
+        }
+      });
   };
 
   if (!data) {
