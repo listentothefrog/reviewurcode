@@ -1,6 +1,6 @@
 import React from "react";
 const CreateCodeReviewPost = React.lazy(
-  () => import("../components/dashboard/CreateCodeReviewPost")
+  () => import("../components/Dashboard/CreateCodeReviewPost")
 );
 import RedStone from "../public/RedStone.png";
 import Head from "next/head";
