@@ -1,4 +1,4 @@
-import { getDoc, doc, increment, setDoc, updateDoc } from "@firebase/firestore";
+import { getDoc, doc, increment, updateDoc } from "@firebase/firestore";
 import { GetServerSideProps } from "next";
 import { db } from "../../lib/firebase/firebase";
 import Head from "next/head";
@@ -22,6 +22,8 @@ const Post = ({ data }: any) => {
   const { addToast } = useToasts();
   const [upVote, setUpVote] = useState(0);
   const [downVote, setDownVote] = useState(0);
+  const [upVoteActive, setUpVoteActive] = useState(true);
+  const [downVoteActive, setDownVoteActive] = useState(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -38,6 +40,7 @@ const Post = ({ data }: any) => {
           appearance: "info",
           autoDismiss: true,
         });
+        setUpVoteActive(!upVoteActive);
       })
       .catch((error: Error) => {
         if (error.message === "Missing or insufficient permissions.") {
@@ -60,6 +63,7 @@ const Post = ({ data }: any) => {
           appearance: "info",
           autoDismiss: true,
         });
+        setDownVoteActive(!downVoteActive);
       })
       .catch((error: Error) => {
         if (error.message === "Missing or insufficient permissions.") {
@@ -93,6 +97,7 @@ const Post = ({ data }: any) => {
         <meta property="twitter:title" content={data.title} />
         <meta property="twitter:description" content={data.body} />
       </Head>
+
       <div className="m-1 sm:m-2">
         <div className="flex items-center justify-evenly w-full flex-col sm:flex-row">
           <div className="w-full">
@@ -108,7 +113,10 @@ const Post = ({ data }: any) => {
 
         <div className="mt-5 flex items-center">
           <div className="flex flex-col items-center">
-            <button onClick={() => upVotePost()}>
+            <button
+              className={upVoteActive ? "cursor-pointer" : "cursor-not-allowed"}
+              onClick={() => upVotePost()}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -125,7 +133,12 @@ const Post = ({ data }: any) => {
               </svg>
             </button>
             {data.upVotes}
-            <button onClick={() => downVotePost()}>
+            <button
+              className={
+                downVoteActive ? "cursor-pointer" : "cursor-not-allowed"
+              }
+              onClick={() => downVotePost()}
+            >
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
