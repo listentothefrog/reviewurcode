@@ -1,4 +1,4 @@
-import { getDoc, doc } from "@firebase/firestore";
+import { getDoc, doc, increment, setDoc, updateDoc } from "@firebase/firestore";
 import { GetServerSideProps } from "next";
 import { db } from "../../lib/firebase/firebase";
 import Head from "next/head";
@@ -6,6 +6,7 @@ import RedStone from "../../public/RedStone.png";
 import Container from "../../components/Container";
 import TwitterIcon from "../../icons/Twitter";
 import { useRouter } from "next/router";
+import { useState } from "react";
 
 export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const docRef = doc(db, "posts", ctx.query.id);
@@ -17,7 +18,29 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
 };
 
 const Post = ({ data }: any) => {
+  const [upVote, setUpVote] = useState(0);
+  const [downVote, setDownVote] = useState(0);
+
+  const router = useRouter();
+  const { id } = router.query;
   const { asPath } = useRouter();
+
+  const upVotePost = async () => {
+    setUpVote(upVote + 1);
+    const docRef = doc(db, "posts", id! as any);
+    await updateDoc(docRef, {
+      upVotes: increment(1),
+    });
+  };
+
+  const downVotePost = async () => {
+    setDownVote(downVote - 1);
+    const docRef = doc(db, "posts", id! as any);
+    await updateDoc(docRef, {
+      upVotes: increment(-1),
+    });
+  };
+
   if (!data) {
     return "Loading...";
   }
@@ -55,7 +78,7 @@ const Post = ({ data }: any) => {
 
         <div className="mt-5 flex items-center">
           <div className="flex flex-col items-center">
-            <button>
+            <button onClick={() => upVotePost()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
@@ -72,7 +95,7 @@ const Post = ({ data }: any) => {
               </svg>
             </button>
             {data.upVotes}
-            <button>
+            <button onClick={() => downVotePost()}>
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 className="h-6 w-6"
