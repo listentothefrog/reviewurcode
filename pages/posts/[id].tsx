@@ -4,16 +4,20 @@ import { db } from "../../lib/firebase/firebase";
 import Head from "next/head";
 import RedStone from "../../public/RedStone.png";
 import Container from "../../components/Container";
+import TwitterIcon from "../../icons/Twitter";
+import { useRouter } from "next/router";
 
 export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const docRef = doc(db, "posts", ctx.query.id);
   const docSnap = await getDoc(docRef);
   const data = docSnap.data();
+  console.log(data);
   if (!data) return { notFound: true };
   return { props: { data } };
 };
 
 const Post = ({ data }: any) => {
+  const { asPath } = useRouter();
   if (!data) {
     return "Loading...";
   }
@@ -52,11 +56,21 @@ const Post = ({ data }: any) => {
         <div className="mt-5">
           <p className="sm:text-base text-xl">{data.body}</p>
         </div>
-        <img
-          className="w-full mt-5"
-          src={data.codeReviewImage}
-          alt="code snippet"
-        />
+        <div>
+          <img
+            className="w-full mt-5"
+            src={data.codeReviewImage}
+            alt="code snippet"
+          />
+        </div>
+        <a
+          href={`http://twitter.com/intent/tweet?url=http://localhost:3000${asPath}`}
+        >
+          <button className="flex items-center mt-2 justify-start px-8 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+            <TwitterIcon width="24" height="20" />
+            <span className="ml-3">Share on Twitter</span>
+          </button>
+        </a>
       </div>
     </Container>
   );
