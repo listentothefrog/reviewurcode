@@ -13,7 +13,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const docRef = doc(db, "posts", ctx.query.id);
   const docSnap = await getDoc(docRef);
   const data = docSnap.data();
-  console.log(data);
   if (!data) return { notFound: true };
   return { props: { data } };
 };
