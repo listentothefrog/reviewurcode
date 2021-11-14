@@ -50,7 +50,8 @@ export default UserSettings;
 
 UserSettings.getInitialProps = () => {
   try {
-    const { uid }: any = auth.currentUser?.uid;
-    return { uid };
+    const [user] = useAuthState(auth);
+    const { username }: any = user?.reloadUserInfo.screenName;
+    return { username };
   } catch {}
 };

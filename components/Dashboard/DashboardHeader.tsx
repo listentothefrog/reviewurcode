@@ -1,10 +1,12 @@
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
 import React, { Fragment } from "react";
+import { useAuthState } from "react-firebase-hooks/auth";
 import Logo from "../../icons/logo/Logo";
 import { auth } from "../../lib/firebase/firebase";
 
 const DashboardHeader = () => {
+  const [user] = useAuthState(auth);
   const navigation = [
     {
       name: "Contributions",
@@ -71,7 +73,7 @@ const DashboardHeader = () => {
                 🔍
               </div>
             </div>
-            <a href={`settings/${auth.currentUser?.uid}`}>
+            <a href={`settings/${user?.reloadUserInfo.screenName}`}>
               <img
                 width="50px"
                 height="50px"
