@@ -34,6 +34,7 @@ const CreateCodeReviewPost = () => {
             createdBy: user?.reloadUserInfo.screenName,
             photoUrl: auth.currentUser?.photoURL,
             upVotes: 0,
+            uid: auth.currentUser?.uid,
           });
         })
         .catch((error: Error) => {
