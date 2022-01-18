@@ -1,6 +1,6 @@
 import { getDoc, doc, increment, updateDoc } from "@firebase/firestore";
 import { GetServerSideProps } from "next";
-import { db } from "../../lib/firebase/firebase";
+import { auth, db } from "../../lib/firebase/firebase";
 import Head from "next/head";
 import RedStone from "../../public/RedStone.png";
 import Container from "../../components/Container";
@@ -21,8 +21,6 @@ const Post = ({ data }: any) => {
   const { addToast } = useToasts();
   const [upVote, setUpVote] = useState(0);
   const [downVote, setDownVote] = useState(0);
-  const [upVoteActive, setUpVoteActive] = useState(true);
-  const [downVoteActive, setDownVoteActive] = useState(true);
 
   const router = useRouter();
   const { id } = router.query;
@@ -39,7 +37,6 @@ const Post = ({ data }: any) => {
           appearance: "info",
           autoDismiss: true,
         });
-        setUpVoteActive(!upVoteActive);
       })
       .catch((error: Error) => {
         console.log(error.message);
@@ -63,7 +60,6 @@ const Post = ({ data }: any) => {
           appearance: "info",
           autoDismiss: true,
         });
-        setDownVoteActive(!downVoteActive);
       })
       .catch((error: Error) => {
         console.log(error.message);
@@ -116,7 +112,11 @@ const Post = ({ data }: any) => {
           <div className="flex flex-col items-center">
             <button
               aria-label="Upvote"
-              className={upVoteActive ? "cursor-pointer" : "cursor-not-allowed"}
+              className={
+                data.uid === auth.currentUser?.uid
+                  ? "cursor-not-allowed"
+                  : "cursor-pointer"
+              }
               onClick={() => upVotePost()}
             >
               <svg
@@ -124,13 +124,13 @@ const Post = ({ data }: any) => {
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="gray"
+                stroke="currentColor"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M14 10h4.764a2 2 0 011.789 2.894l-3.5 7A2 2 0 0115.263 21h-4.017c-.163 0-.326-.02-.485-.06L7 20m7-10V5a2 2 0 00-2-2h-.095c-.5 0-.905.405-.905.905 0 .714-.211 1.412-.608 2.006L7 11v9m7-10h-2M7 20H5a2 2 0 01-2-2v-6a2 2 0 012-2h2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M5 15l7-7 7 7"
                 />
               </svg>
             </button>
@@ -138,7 +138,9 @@ const Post = ({ data }: any) => {
             <button
               aria-label="DownVote"
               className={
-                downVoteActive ? "cursor-pointer" : "cursor-not-allowed"
+                data.uid === auth.currentUser?.uid
+                  ? "cursor-not-allowed"
+                  : "cursor-pointer"
               }
               onClick={() => downVotePost()}
             >
@@ -147,13 +149,13 @@ const Post = ({ data }: any) => {
                 className="h-6 w-6"
                 fill="none"
                 viewBox="0 0 24 24"
-                stroke="gray"
+                stroke="currentColor"
               >
                 <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M10 14H5.236a2 2 0 01-1.789-2.894l3.5-7A2 2 0 018.736 3h4.018a2 2 0 01.485.06l3.76.94m-7 10v5a2 2 0 002 2h.096c.5 0 .905-.405.905-.904 0-.715.211-1.413.608-2.008L17 13V4m-7 10h2m5-10h2a2 2 0 012 2v6a2 2 0 01-2 2h-2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M19 9l-7 7-7-7"
                 />
               </svg>
             </button>
