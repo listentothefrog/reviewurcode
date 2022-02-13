@@ -1,5 +1,5 @@
 import { addDoc, collection } from "@firebase/firestore";
-import { getDownloadURL, ref, uploadBytes } from "@firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useRouter } from "next/router";
 import { useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -11,6 +11,7 @@ const CreateCodeReviewPost = () => {
   const [user] = useAuthState(auth);
   const [title, setTitle] = useState("");
   const [body, setBody] = useState("");
+  const [tags, setTags] = useState("");
 
   const router = useRouter();
   const { addToast } = useToasts();
@@ -33,7 +34,7 @@ const CreateCodeReviewPost = () => {
             codeReviewImage: url,
             createdBy: user?.reloadUserInfo.screenName,
             photoUrl: auth.currentUser?.photoURL,
-            upVotes: 0,
+            tags: tags,
             uid: auth.currentUser?.uid,
           });
         })
@@ -57,7 +58,7 @@ const CreateCodeReviewPost = () => {
             the {""}
             <a
               target="_blank"
-              href="http://localhost://3000/docs/upload-code"
+              href="http://localhost:3000/docs/uploading-code"
               rel="noreferrer"
               className="text-blue-800 hover:underline hover:text-blue-700"
             >
@@ -111,6 +112,23 @@ const CreateCodeReviewPost = () => {
                 onChange={(e) => setBody(e.target.value)}
                 value={body}
                 className="block mt-3 px-2 py-3 pl-7 pr-12 w-full sm:text-sm border-gray-300 border-2 rounded-md"
+              />
+            </div>
+          </div>
+          <div className="w-full mt-5">
+            <p className="font-bold">Tags</p>
+            <p className="text-gray-500">
+              Tags are used to target users who are watching your tags
+            </p>
+            <div>
+              <input
+                required
+                type="text"
+                id="tags"
+                onChange={(e) => setTags(e.target.value)}
+                value={tags}
+                className="block mt-3 px-2 py-3 pl-7 pr-12 w-full sm:text-sm border-gray-300 border-2 rounded-md"
+                placeholder="eg: typescript, express, nextjs"
               />
             </div>
           </div>
