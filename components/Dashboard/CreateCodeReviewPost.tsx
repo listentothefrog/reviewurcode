@@ -73,7 +73,12 @@ const CreateCodeReviewPost = () => {
               >
                 <section className="h-full overflow-auto p-8 w-full flex flex-col">
                   <header className="border-dashed border-2 border-gray-500 py-12 flex flex-col justify-center items-center">
-                    <input required type="file" id="file" />
+                    <input
+                      accept="image/png, image/gif, image/jpeg"
+                      required
+                      type="file"
+                      id="file"
+                    />
                   </header>
                 </section>
               </article>
