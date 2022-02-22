@@ -63,12 +63,12 @@ const ViewFeed = () => {
                           className="block rounded-full w-7"
                           src={data.photoUrl}
                         />
-                        <p className="ml-2 text-sm">{data.createdBy}</p>
+                        <Link href={`/dash`}>
+                          <p className="ml-2 text-sm cursor-pointer">
+                            {data.createdBy}
+                          </p>
+                        </Link>
                       </a>
-                      <p className="ml-2 text-sm">
-                        <span className="text-green-600">{data.upVotes}</span>{" "}
-                        upvotes
-                      </p>
                     </footer>
                   </article>
                 </div>
