@@ -107,66 +107,14 @@ const Post = ({ data }: any) => {
           </div>
         </div>
         <div className="w-full border border-gray-500 mt-2"></div>
-
         <div className="mt-5 flex items-center">
-          <div className="flex flex-col items-center">
-            <button
-              aria-label="Upvote"
-              className={
-                data.uid === auth.currentUser?.uid
-                  ? "cursor-not-allowed"
-                  : "cursor-pointer"
-              }
-              onClick={() => upVotePost()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M5 15l7-7 7 7"
-                />
-              </svg>
-            </button>
-            {data.upVotes}
-            <button
-              aria-label="DownVote"
-              className={
-                data.uid === auth.currentUser?.uid
-                  ? "cursor-not-allowed"
-                  : "cursor-pointer"
-              }
-              onClick={() => downVotePost()}
-            >
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                className="h-6 w-6"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke="currentColor"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M19 9l-7 7-7-7"
-                />
-              </svg>
-            </button>
-          </div>
-          <p className="sm:text-base text-xl ml-5">{data.body}</p>
+          <p className="sm:text-base text-xl">{data.body}</p>
         </div>
         <div>
           <img
             width="800px"
             height="800px"
-            className="w-full mt-5"
+            className="w-full mt-5 rounded-b-md"
             src={data.codeReviewImage}
             alt="code snippet"
           />
@@ -174,7 +122,7 @@ const Post = ({ data }: any) => {
         <a
           href={`https://twitter.com/intent/tweet?url=http://localhost:3000${asPath}`}
         >
-          <button className="flex items-center mt-2 justify-start px-8 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 md:py-4 md:text-lg md:px-10">
+          <button className="flex items-center mt-2 justify-start px-8 py-3 text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
             <TwitterIcon width="24" height="20" />
             <span className="ml-3">Share on Twitter</span>
           </button>
