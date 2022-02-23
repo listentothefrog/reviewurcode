@@ -1,13 +1,11 @@
-import { getDoc, doc, increment, updateDoc } from "@firebase/firestore";
+import { getDoc, doc } from "@firebase/firestore";
 import { GetServerSideProps } from "next";
-import { auth, db } from "../../lib/firebase/firebase";
+import { db } from "../../lib/firebase/firebase";
 import Head from "next/head";
 import RedStone from "../../public/RedStone.png";
 import Container from "../../components/Container";
 import TwitterIcon from "../../icons/Twitter";
 import { useRouter } from "next/router";
-import { useState } from "react";
-import { useToasts } from "react-toast-notifications";
 
 export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
   const docRef = doc(db, "posts", ctx.query.id);
@@ -18,59 +16,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx: any) => {
 };
 
 const Post = ({ data }: any) => {
-  const { addToast } = useToasts();
-  const [upVote, setUpVote] = useState(0);
-  const [downVote, setDownVote] = useState(0);
-
-  const router = useRouter();
-  const { id } = router.query;
   const { asPath } = useRouter();
-
-  const upVotePost = async () => {
-    setUpVote(upVote + 1);
-    const docRef = doc(db, "posts", id! as any);
-    await updateDoc(docRef, {
-      upVotes: increment(1),
-    })
-      .then(() => {
-        addToast("Upvoted post succesfully just refresh the page 👍", {
-          appearance: "info",
-          autoDismiss: true,
-        });
-      })
-      .catch((error: Error) => {
-        console.log(error.message);
-        if (error.message === "Missing or insufficient permissions.") {
-          addToast("Please log in to vote on posts", {
-            appearance: "error",
-            autoDismiss: true,
-          });
-        }
-      });
-  };
-
-  const downVotePost = async () => {
-    setDownVote(downVote - 1);
-    const docRef = doc(db, "posts", id! as any);
-    await updateDoc(docRef, {
-      upVotes: increment(-1),
-    })
-      .then(() => {
-        addToast("Downvoted post succesfully just refresh the page 👎", {
-          appearance: "info",
-          autoDismiss: true,
-        });
-      })
-      .catch((error: Error) => {
-        console.log(error.message);
-        if (error.message === "Missing or insufficient permissions.") {
-          addToast("Please log in to vote on posts", {
-            appearance: "error",
-            autoDismiss: true,
-          });
-        }
-      });
-  };
 
   if (!data) {
     return "Loading...";
