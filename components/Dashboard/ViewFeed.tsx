@@ -63,7 +63,7 @@ const ViewFeed = () => {
                           className="block rounded-full w-7"
                           src={data.photoUrl}
                         />
-                        <Link href={`/dash`}>
+                        <Link href={`u/${data.createdBy}`}>
                           <p className="ml-2 text-sm cursor-pointer">
                             {data.createdBy}
                           </p>
