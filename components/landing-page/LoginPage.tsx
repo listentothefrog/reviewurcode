@@ -64,8 +64,8 @@ const LoginPage = () => {
                   for people to review code easily and efficiently. With our
                   user-friendly interface, you can quickly review code and get
                   feedback from experienced developers. Our code review service
-                  helps you to save time and avoid technical debt while ensuring
-                  your code is up-to-date and bug-free.
+                  helps you to save time and avoid bugs while ensuring your code
+                  is up-to-date and bug-free.
                 </p>
                 <div className="mt-5 sm:mt-8 sm:flex sm:justify-center lg:justify-start">
                   <div className="rounded-md shadow">
